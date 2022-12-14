@@ -40,7 +40,7 @@ function LogIn(props) {
   const closeButton = () => {
     props.setWelcome(true);
     props.setLogIn(false);
-  }
+  };
 
   return (
     <div className="login-modal">

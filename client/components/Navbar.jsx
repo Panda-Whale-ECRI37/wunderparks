@@ -5,8 +5,12 @@ const Navbar = (props) => {
     if (component === 'logout') {
       props.setWelcome(true);
       props.setShowWebsite(false);
-    } else if (component === 'trips') {
-      console.log(`need to write this`);
+    } else if (component === 'logTrip') {
+      props.setPlan(false);
+      props.setLogTrip(true);
+    } else if (compoment === 'planTrip') {
+      props.setPlan(true);
+      props.setLogTrip(false);
     }
   };
 
@@ -18,10 +22,24 @@ const Navbar = (props) => {
       <div className="menu-items">
         <ul>
           <li>
-            <a href="#"> Log Trip</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                changeRender('logTrip');
+              }}
+            >
+              Log Trip
+            </a>
           </li>
           <li>
-            <a href="#">Plan Trip</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                changeRender('planTrip');
+              }}
+            >
+              Plan Trip
+            </a>
           </li>
           <li>
             <a

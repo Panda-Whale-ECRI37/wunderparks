@@ -7,6 +7,12 @@ import parksData from '../public/parksData.js';
 
 // declare MainContainer function
 const MainContainer = (props) => {
+  //states to show the log a trip vs plan a trip
+
+  const [plan, setPlan] = useState(true);
+  const [logTrip, setLogTrip] = useState(false);
+
+  //states for activities
   const [activities, setActivities] = useState({
     artsAndCulture: false,
     biking: false,
@@ -27,12 +33,16 @@ const MainContainer = (props) => {
   });
   // useEffect(){
 
+  //function to toggle between showing the setlog and plan trip
+
   // };
   return (
     <div className="toolpage">
       <Navbar
         setWelcome={props.setWelcome}
         setShowWebsite={props.setShowWebsite}
+        setLogTrip={setLogTrip}
+        setPlan={setPlan}
       />
 
       <div className="mainContainer">
@@ -41,6 +51,8 @@ const MainContainer = (props) => {
           parksData={parksData}
           activities={activities}
           topics={topics}
+          logTrip={logTrip}
+          plan={plan}
         />
         <IconMaker codes={props.codes} />
       </div>
