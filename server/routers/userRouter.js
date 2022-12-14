@@ -1,5 +1,5 @@
-const express = require('express');
-const userController = require('../controllers/UserController');
+const express = require("express");
+const userController = require("../controllers/UserController");
 
 const userRouter = express.Router();
 
@@ -17,7 +17,9 @@ userRouter.post( //body: {username, password}
   userController.verifyUser,
   userController.getParks,
   (_req, res) => {
-    return res.status(200).json({user: res.locals.user, parks: res.locals.parks});
+    return res
+      .status(200)
+      .json({ user: res.locals.user, parks: res.locals.parks });
   }
 );
 

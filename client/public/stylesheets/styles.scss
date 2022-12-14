@@ -2,14 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import "sidebar.scss";
 @import "user-modal.scss";
+@import "planyourtrip.scss";
+@import "navbar.scss";
+@import "_variables.scss";
 
-:root{
+:root {
   --body-bg-color: rgb(62, 82, 69);
   --body-bg-img-color: rgba(255, 255, 255, 0.25);
   --h1-color: white;
   --login-signup-bg-color: beige;
   --login-signup-color: black;
-
 }
 .app {
   margin: none;
@@ -36,9 +38,8 @@ body {
   display: flex;
 }
 
-h1 {
-  color: var(--h1-color);
-  text-align: center;
+.mainContainer {
+  display: flex;
 }
 
 .imageIcon {
@@ -62,11 +63,11 @@ h1 {
   filter: none;
 }
 
-.main {
-  overflow: scroll;
-}
+// .main {
+//   overflow: scroll;
+// }
 
-.container {
+.iconMaker {
   overflow: sroll;
   display: flex;
   flex-direction: row;

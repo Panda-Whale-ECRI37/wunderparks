@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react';
-import SidebarContainer from '../containers/SidebarContainer.jsx';
+// import SidebarContainer from "../containers/SidebarContainer.jsx";
 import MainContainer from '../containers/MainContainer.jsx';
 import CreateUser from './modal/CreateUser.jsx';
 import LogIn from './modal/LogIn.jsx';
@@ -41,6 +41,7 @@ const App = () => {
   const [showCreateAccount, setCreateAccount] = useState(false);
   const [showLogIn, setLogIn] = useState(false);
   const [showWebsite, setShowWebsite] = useState(false);
+  // const [planOptions, setPlanOptions] = useState();
 
   const renderToPage = () => {
     if (welcome === true) {
@@ -57,18 +58,20 @@ const App = () => {
         />
       );
     } else if (showLogIn === true) {
-      return <LogIn />;
+      return (
+        <LogIn
+          setUserInfo={setUserInfo}
+          setShowWebsite={setShowWebsite}
+          setLogIn={setLogIn}
+        />
+      );
     } else if (showWebsite === true) {
       return (
-        <div>
-          {/* <SidebarContainer codes={codes} /> */}
-          <div className="right">
-            <div className="float">
-              <h1> WÜNDER PARKS</h1>
-            </div>
-            <MainContainer codes={codes} />
-          </div>
-        </div>
+        <MainContainer
+          codes={codes}
+          setWelcome={setWelcome}
+          setShowWebsite={setShowWebsite}
+        />
       );
     }
   };
@@ -87,15 +90,19 @@ const App = () => {
   return (
     <div className="app">
       {renderToPage()}
-      {/* <LogIn /> */}
-      {/* <CreateUser /> */}
+
+      {/* //REMOVED */}
       {/* <SidebarContainer codes={codes} />
-      <div className="right">
-        <div className="float">
+      <div className='right'>
+        <div className='float'>
           <h1> WÜNDER PARKS</h1>
-        </div>
-        <MainContainer codes={codes} />
-      </div> */}
+        </div> */}
+
+      {/* <MainContainer
+        codes={codes}
+        setWelcome={setWelcome}
+        setShowWebsite={setShowWebsite}
+      /> */}
     </div>
   );
 };
