@@ -34,9 +34,10 @@ function CreateUser(props) {
         props.setShowWebsite(true);
         props.setCreateAccount(false);
       })
-      .catch((err) => {
-        console.log(err);
-        // setErr(true);
+      .catch(() => {
+        // console.log(err);
+        alert(`Username is already taken. Please choose something different.`);
+        window.location = '/';
       });
   };
 
