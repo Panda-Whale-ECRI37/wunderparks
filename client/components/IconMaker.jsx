@@ -19,22 +19,22 @@ function IconMaker(props) {
         // console.log(codes.includes(parkCode));
       }
     });
-    //if page is plan your trip, then do this whole conditional
-    // for object of parkcode in our data
-    //check if it includes the filtered states, ex: activites -> name: "biking"
+    if (props.filteredParkCodes.includes(parkCode)) {
+      parksArr.push(
+        <Icon
+          key={park}
+          park={park}
+          imgLink={images[park]}
+          parkCode={parkCode}
+          className={codes.parkCode ? "color" : undefined} //codes.includes(parkCode)
+        />
+      );
+    }
 
-    parksArr.push(
-      <Icon
-        key={park}
-        park={park}
-        imgLink={images[park]}
-        parkCode={parkCode}
-        className={codes.parkCode ? "color" : undefined} //codes.includes(parkCode)
-      />
-    );
-    // console.log('link :', imgLink/)
+    // useEffect(()=>{
+    //   console.log(props.activities);
 
-    //otherwise, do the regular pushing of all the icons
+    // });
   }
 
   return <div className='iconMaker'>{parksArr}</div>;

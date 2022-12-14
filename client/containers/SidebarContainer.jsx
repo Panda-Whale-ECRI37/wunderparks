@@ -10,8 +10,8 @@ const SidebarContainer = (props) => {
       <ParkTally codes={props.codes} /> */}
       <PlanTrip
         parksData={props.parksData}
-        activities={props.activities}
-        topics={props.topics}
+        filteredParkCodes={props.filteredParkCodes}
+        setFilteredParkCodes={props.setFilteredParkCodes}
       />
     </div>
   );

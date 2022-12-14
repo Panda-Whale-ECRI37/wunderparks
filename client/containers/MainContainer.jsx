@@ -4,28 +4,17 @@ import BasicExample from "../components/ProgressBar.jsx";
 import SidebarContainer from "./SidebarContainer.jsx";
 import Navbar from "../components/Navbar.jsx";
 import parksData from "../public/parksData.js";
+import parkcodes from "../public/parkcodes.js";
 
 // declare MainContainer function
 const MainContainer = (props) => {
-  const [activities, setActivities] = useState({
-    artsAndCulture: false,
-    biking: false,
-    birdWatching: false,
-    // camping: false,
-    // fishing: false,
-    // guidedTours: false,
-    // hiking: false,
-    // giftShop: false,
-  });
-  const [topics, setTopics] = useState({
-    archeology: false,
-    explorers: false,
-    fossils: false,
-    // homesteading: false,
-    // nativeAmericanHeritage: false,
-    // womensHistory: false,
-  });
+  const [state, setState] = useState();
   // useEffect(){
+  const allCodes = [];
+  for (let parkName in parkcodes) {
+    allCodes.push(parkcodes[parkName]);
+  }
+  const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
 
   // };
   return (
@@ -35,10 +24,10 @@ const MainContainer = (props) => {
         <SidebarContainer
           codes={props.codes}
           parksData={parksData}
-          activities={activities}
-          topics={topics}
+          filteredParkCodes={filteredParkCodes}
+          setFilteredParkCodes={setFilteredParkCodes}
         />
-        <IconMaker codes={props.codes} />
+        <IconMaker codes={props.codes} filteredParkCodes={filteredParkCodes} />
       </div>
     </div>
   );
