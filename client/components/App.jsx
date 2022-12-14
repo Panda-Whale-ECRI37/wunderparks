@@ -64,6 +64,7 @@ const App = () => {
           setUserInfo={setUserInfo}
           setShowWebsite={setShowWebsite}
           setLogIn={setLogIn}
+          setCodes={setCodes}
         />
       );
     } else if (showWebsite === true) {

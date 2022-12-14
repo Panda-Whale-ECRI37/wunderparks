@@ -57,7 +57,7 @@ userController.getUser = (req, res, next) => {
 
 userController.verifyUser = (req, res, next) => {
   const { username, password } = req.body;
-  User.findOne({ username: "aalok1" }) //CHANGED TO AALOK FROM USERNAME
+  User.findOne({ username: username }) //CHANGED TO AALOK FROM USERNAME
     .then((user) => {
       if (!user) {
         return next({
@@ -144,7 +144,8 @@ userController.addTrip = async (req, res, next) => {
 
 // Get parks completed array for icon coloring on landing page
 userController.getParks = (req, res, next) => {
-  User.findOne({ name: "Aalok" })
+  const { username } = req.body;
+  User.findOne({ username: username })
     // const myUsername = res.locals.user.username;
     // User.findOne({ username: myUsername })
     .then((user) => {
