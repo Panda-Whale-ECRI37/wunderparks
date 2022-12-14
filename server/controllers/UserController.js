@@ -27,7 +27,8 @@ userController.createUser = async (req, res, next) => {
       name,
       username,
       password: hashPW,
-      parksVisited: {},
+      parksVisited: [],
+      trips: [],
     });
     res.locals.newUser = user; // <-- send back all user info
     return next();
@@ -86,13 +87,37 @@ userController.verifyUser = (req, res, next) => {
     });
 };
 
-// Add a park to a user's completed parks
+// Add a park to a user's visited parks array
 userController.addPark = async (req, res, next) => {
   try {
     const parkCode = req.params.parkCode;
-    console.log(parkCode);
-    const newTrip = {
-      //newPark
+    const user = await User.findOne({ username: req.body.username })
+    // const user = await User.findOne({ name: 'Aalok' });
+    if (user) {
+      // const usersParksVisited = Object.keys(user.parksVisited);
+      if(!user.parksVisited.includes(parkCode)) {//add park if has not visited
+        user.parksVisited = [ ...user.parksVisited, parkCode ];
+        const newUser = await user.save();
+      }  
+    }
+    res.locals.parks = user.parksVisited; // <-- send back updated list of all parks & trips XXthe newly added park's info
+    return next();
+  } catch (err) {
+    const error = {
+      log: 'userController.addPark',
+      status: 500,
+      message: { err: 'User not found' },
+    };
+    return next(error);
+  }
+};
+
+//Add trip to array of trip objects
+userController.addTrip = async (req, res, next) => {
+  try {
+    const parkCode = req.params.parkCode;
+    const newTrip = { // create new trip
+      parkCode: parkCode,
       date: req.body.date,
       notes: req.body.notes,
       activitiesCompleted: req.body.activitiesDone,
@@ -101,17 +126,16 @@ userController.addPark = async (req, res, next) => {
     // const user = await User.findOne({ name: 'Aalok' });
     if (user) {
       const usersParksVisited = Object.keys(user.parksVisited);
-      if (usersParksVisited.includes(parkCode)) {
-        //if user has already visited this park
-        user.parksVisited = user.parksVisited.parkCode.concat(newTrip); // { ...user.parksVisited, [parkCode]: newPark };
+      if(usersParksVisited.includes(parkCode)) {//if user has already visited this park
+        user.parksVisited = user.parksVisited.parkCode.concat(newTrip) // { ...user.parksVisited, [parkCode]: newPark };
         const newUser = await user.save();
         console.log(newUser);
-      } else {
-        //if first time visiting this park
+      }
+      else { //if first time visiting this park
         user.parksVisited.parkCode = [newTrip]; // set key as parkCode and value as array w/ first trip
       }
     }
-    res.locals.parks = user.parksVisited; // <-- send back updated list of all parks & trips XXthe newly added park's info
+    res.locals.trips = user.trips; // <-- send back updated list of all parks & trips XXthe newly added park's info
     return next();
   } catch (err) {
     return next(err);
@@ -124,7 +148,7 @@ userController.getParks = (req, res, next) => {
     // const myUsername = res.locals.user.username;
     // User.findOne({ username: myUsername })
     .then((user) => {
-      res.locals.parks = Object.keys(user.parksVisited); // <-- send back array of parks completed
+      res.locals.parks = user.parksVisited; // <-- send back array of parks completed
       return next();
     })
     .catch((err) => {
@@ -135,12 +159,16 @@ userController.getParks = (req, res, next) => {
 // Get user's park-specific info for top of modal display
 userController.getParkInfo = (req, res, next) => {
   try {
-    // console.log(req.params);
     const { parkCode } = req.params;
-    const { parksVisited } = res.locals.user;
-    // console.log(parkCode);
-    console.log(parksVisited);
-    res.locals.parkInfo = parksVisited[parkCode];
+
+    const userTrips = res.locals.user.trips;
+    let parkTrips = [];
+    for(let i = 0; i < userTrips.length; i++) {
+      if(userTrips[i].parkCode === parkCode) {
+        parkTrips.push(userTrips[i]);
+      }
+    }
+    res.locals.tripsInfo = parkTrips; //send info about specific parkCode
     return next();
   } catch (err) {
     return next(err);

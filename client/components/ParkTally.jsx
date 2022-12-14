@@ -7,8 +7,8 @@ const ParkTally = (props) => {
   const parksVisited = [];
   //  iterate through the parkcodes js file
   for (let park in parkcodes) {
-    const { codes } = props;
-    if (codes.includes(parkcodes[park])) {
+    const { codes } = props; //codes = ['brca','cong']
+    if (codes.includes(parkcodes[park])) { //parkcodes[park] = 'brca'
       parksVisited.push(
         <li className='visited_item' key={parkcodes[park]}>
           {park}
