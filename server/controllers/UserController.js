@@ -89,8 +89,8 @@ userController.addPark = async (req, res, next) => {
       notes: req.body.notes,
       activitiesCompleted: req.body.activitiesDone,
     };
-    // const user = await User.findOne({ name: req.body.name})
-    const user = await User.findOne({ name: 'Aalok' });
+    const user = await User.findOne({ username: req.body.username })
+    // const user = await User.findOne({ name: 'Aalok' });
     if (user) {
       const parksVisited = { ...user.parksVisited, [parkCode]: newPark };
       user.parksVisited = parksVisited;
