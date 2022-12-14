@@ -4,26 +4,39 @@ function CreateUser(props) {
   const [name, setName] = useState('');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
 
   //function to send info to the database
 
   const sendInfo = (e) => {
     const requestBody = { username, password, name };
-    fetch('http://localhost:8080/user', {
+    console.log(requestBody);
+
+    if (username === '' || password === '' || name === '') {
+      return alert('Please fill out all the fields.');
+    }
+
+    fetch('http://localhost:3000/user', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       body: JSON.stringify(requestBody),
     })
       .then((data) => data.json())
       .then((data) => {
+        // on successful create info
         console.log(data);
+        props.setUserInfo(data.username); // save username to state
+        props.setCodes(data.parksVisited); // save parkvisited to state
+        props.setShowWebsite(true);
+        props.setCreateAccount(false);
       })
       .catch((err) => {
         console.log(err);
+        // setErr(true);
       });
   };
 
@@ -34,9 +47,16 @@ function CreateUser(props) {
     props.setCreateAccount(false);
   };
 
+  const renderError = () => {
+    if (err === true) {
+      return <p>Username is already taken.</p>;
+    }
+  };
+
   return (
     <div className="login-modal">
       <h4>Create your account:</h4>
+      {renderError()}
       <div className="input-container">
         <label>Name</label>
         <input
@@ -76,8 +96,15 @@ function CreateUser(props) {
           }}
         />
       </div>
-      <div className="button-container" onClick={(e) => sendInfo(e)}>
-        <input type="submit" className="submit-button" />
+      <div className="button-container">
+        <button
+          className="submit-button"
+          onClick={(e) => {
+            sendInfo(e);
+          }}
+        >
+          submit
+        </button>
       </div>
       <div className="close-container">
         <a

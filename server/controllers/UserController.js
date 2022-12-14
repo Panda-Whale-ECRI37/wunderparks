@@ -7,6 +7,8 @@ const userController = {};
 
 // Create a new user in the database
 userController.createUser = async (req, res, next) => {
+  console.log("reqbody", req.body);
+  console.log(res.locals);
   try {
     if (res.locals.user) {
       // if res.locals.user is defined, then user w/ username exists already
@@ -16,6 +18,7 @@ userController.createUser = async (req, res, next) => {
         message: { err: "Username Taken" },
       });
     }
+    console.log("create user", req.body);
     const salt = await bcrypt.genSalt(10);
     const { name, username, password } = req.body;
     const hashPW = await bcrypt.hash(password, salt);
@@ -42,8 +45,8 @@ userController.getUser = (req, res, next) => {
       if (user) {
         //will be null if cannot find user w/ username
         res.locals.user = user; // persist user info if found
-        return next();
       }
+      return next();
     })
     .catch((err) => {
       console.log("User not found");
@@ -87,20 +90,28 @@ userController.verifyUser = (req, res, next) => {
 userController.addPark = async (req, res, next) => {
   try {
     const parkCode = req.params.parkCode;
-    const newPark = {
+    console.log(parkCode);
+    const newTrip = {
+      //newPark
       date: req.body.date,
       notes: req.body.notes,
       activitiesCompleted: req.body.activitiesDone,
     };
-    // const user = await User.findOne({ name: req.body.name})
-    const user = await User.findOne({ name: "Aalok" });
+    const user = await User.findOne({ username: req.body.username });
+    // const user = await User.findOne({ name: 'Aalok' });
     if (user) {
-      const parksVisited = { ...user.parksVisited, [parkCode]: newPark };
-      user.parksVisited = parksVisited;
-      const newUser = await user.save();
-      console.log(newUser);
+      const usersParksVisited = Object.keys(user.parksVisited);
+      if (usersParksVisited.includes(parkCode)) {
+        //if user has already visited this park
+        user.parksVisited = user.parksVisited.parkCode.concat(newTrip); // { ...user.parksVisited, [parkCode]: newPark };
+        const newUser = await user.save();
+        console.log(newUser);
+      } else {
+        //if first time visiting this park
+        user.parksVisited.parkCode = [newTrip]; // set key as parkCode and value as array w/ first trip
+      }
     }
-    res.locals.park = user.parksVisited[parkCode]; // <-- send back the newly added park's info
+    res.locals.parks = user.parksVisited; // <-- send back updated list of all parks & trips XXthe newly added park's info
     return next();
   } catch (err) {
     return next(err);
