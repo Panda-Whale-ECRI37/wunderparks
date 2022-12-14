@@ -1,30 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
-:root{
---form-visited-list-bg-color: #d2d2cf3e;
---form-color: white;
---form-box-shadow-color: rgba(0, 0, 0, 0.16);
---h2-and-progress-bg-colors: ghostwhite;
---visited-list-color: white;
---form-h2-bg-color: #070a015e;
---input-border-color: #8292a2;
---input-border-focus-color:#3acfff;
---input-bg-color:white;
---input-focus-box-shadow:rgba(0, 120, 250, 0.1);
---select-dropdown-bg-color:e6e6e6;
---selected-dropdown-menu-bg-color:#e6e6e6;
---selected-dropdown-after-border-top-color: #aaa;
---white: #ffffff;
---black: rgb(0, 0, 0);
---comment-box-shadows-color-1:rgba(0, 0, 0, 0.5);
---comment-box-shadows-color-2:rgba(0, 0, 0, 0.25);
---comment-box-shadows-color-3:rgba(0, 0, 0, 0.05);
---submit-hover-color:rgb(249, 250, 251);
---progress-bar-color:rgb(68, 98, 68);
+:root {
+  --form-visited-list-bg-color: #d2d2cf3e;
+  --form-color: white;
+  --form-box-shadow-color: rgba(0, 0, 0, 0.16);
+  --h2-and-progress-bg-colors: ghostwhite;
+  --visited-list-color: white;
+  --form-h2-bg-color: #070a015e;
+  --input-border-color: #8292a2;
+  --input-border-focus-color: #3acfff;
+  --input-bg-color: white;
+  --input-focus-box-shadow: rgba(0, 120, 250, 0.1);
+  --select-dropdown-bg-color: e6e6e6;
+  --selected-dropdown-menu-bg-color: #e6e6e6;
+  --selected-dropdown-after-border-top-color: #aaa;
+  --white: #ffffff;
+  --black: rgb(0, 0, 0);
+  --comment-box-shadows-color-1: rgba(0, 0, 0, 0.5);
+  --comment-box-shadows-color-2: rgba(0, 0, 0, 0.25);
+  --comment-box-shadows-color-3: rgba(0, 0, 0, 0.05);
+  --submit-hover-color: rgb(249, 250, 251);
+  --progress-bar-color: rgb(68, 98, 68);
 }
 
 .sidebarContainer {
-  // width: 250px;
+  width: 350px;
   // height: 620px;
   // margin-top: 100px;
   // margin-left: 80px;
@@ -40,7 +40,7 @@
 }
 
 .form {
-  width: 250px;
+  // width: 250px;
   height: 620px;
   padding: 10px 20px;
   background-color: var(--form-visited-list-bg-color);
@@ -67,8 +67,8 @@
 }
 
 .visited_list {
-  width: 210px;
-  height: 230px;
+  // width: 210px;
+  // height: 230px;
   // margin-top: 760px;
   // margin-left: 80px;
   padding: 15px 40px;
@@ -166,7 +166,8 @@ input[type="date"]:focus {
   overflow: scroll;
   height: 150px;
   // perspective: 1500px;
-  box-shadow: 5px 5px 5px 0 var(--comment-box-shadows-color-1), 0 1px 10px 0 var(--comment-box-shadows-color-2),
+  box-shadow: 5px 5px 5px 0 var(--comment-box-shadows-color-1),
+    0 1px 10px 0 var(--comment-box-shadows-color-2),
     0 2px 4px -1px var(--comment-box-shadows-color-3);
 
   border-color: -moz-use-text-color var(--white) var(--white) -moz-use-text-color;
@@ -192,9 +193,9 @@ input[type="date"]:focus {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.right {
-  // margin-left: 350px;
-}
+// .right {
+//   // margin-left: 350px;
+// }
 
 #submit {
   background-color: var(--white);
