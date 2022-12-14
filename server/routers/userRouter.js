@@ -12,12 +12,12 @@ userRouter.get(
   }
 );
 
-userRouter.get('/', userController.verifyUser, userController.getParks, (_req, res) => {
+userRouter.post('/login', userController.verifyUser, userController.getParks, (_req, res) => {
   return res.status(200).json({user: res.locals.user, parks: res.locals.parks});
 });
 
 userRouter.post('/:parkCode', userController.addPark, (_req, res) => {
-  return res.status(200).json(res.locals.park);
+  return res.status(200).json(res.locals.parks);
 });
 
 userRouter.post('/', userController.getUser, userController.createUser, (_req, res) => {
