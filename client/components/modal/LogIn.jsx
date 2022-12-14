@@ -6,9 +6,9 @@ function LogIn(props) {
 
   const onsubmit = (e) => {
     e.preventDefault();
-    // if(username != password){
-    //   alert("Please input the correct username or password")
-    // }
+    if (username === '' || password === '') {
+      return alert('Please fill out all the fields.');
+    }
     console.log('we are in the submit');
 
     const requestBody = { username, password };
@@ -24,9 +24,14 @@ function LogIn(props) {
       .then((data) => data.json())
       .then((data) => {
         console.log('data', data);
+        props.setUserInfo(data.user.username); // save username to state
+        // props.setCodes(data.parksVisited); // save parkvisited to state
+        props.setShowWebsite(true);
+        props.setLogIn(false);
       })
       .catch((err) => {
-        return alert('username or password incorrect. Please try again.');
+        // return alert('username or password incorrect. Please try again.');
+        console.log(err);
       });
   };
 
