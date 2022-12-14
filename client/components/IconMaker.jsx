@@ -8,7 +8,7 @@ import parkCodes from "../public/parkcodes.js";
 function IconMaker(props) {
   const { codes } = props;
   // console.log('props in iconmaker: ', props);
-
+  // console.log(props);
   const parksArr = [];
   for (let park in images) {
     let parkCode;
@@ -29,7 +29,7 @@ function IconMaker(props) {
         park={park}
         imgLink={images[park]}
         parkCode={parkCode}
-        className={codes.parkCode ? "color" : undefined} //codes.includes(parkCode)
+        className={codes.includes(parkCode) ? "color" : undefined} //codes.includes(parkCode)
       />
     );
     // console.log('link :', imgLink/)
