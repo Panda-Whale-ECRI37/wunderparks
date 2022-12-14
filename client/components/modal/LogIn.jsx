@@ -24,9 +24,10 @@ function LogIn(props) {
       .then((data) => data.json())
       .then((data) => {
         console.log('data', data);
-        // props.setUserInfo(data.user.username);
+        props.setUserInfo(data.username);
         // save username to state
-        // props.setCodes(data.parksVisited); // save parkvisited to state
+        props.setCodes(data.parksVisited);
+        // save parkvisited to state
         props.setShowWebsite(true);
         props.setLogIn(false);
       })
@@ -38,7 +39,7 @@ function LogIn(props) {
 
   // const closeButton = () => {
   //   props.setWelcome(true);
-  //   props.
+  //   props.setLogIn(false);
   // }
 
   return (

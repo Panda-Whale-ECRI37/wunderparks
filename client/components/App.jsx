@@ -7,7 +7,7 @@ import Welcome from './modal/Welcome.jsx';
 
 const App = () => {
   // let codes = [];
-  const [codes, setCodes] = useState({});
+  const [codes, setCodes] = useState([]);
 
   /*
   const parksVisited = {
@@ -60,6 +60,7 @@ const App = () => {
     } else if (showLogIn === true) {
       return (
         <LogIn
+          setWelcome={setWelcome}
           setUserInfo={setUserInfo}
           setShowWebsite={setShowWebsite}
           setLogIn={setLogIn}
