@@ -57,7 +57,13 @@ const App = () => {
         />
       );
     } else if (showLogIn === true) {
-      return <LogIn />;
+      return (
+        <LogIn
+          setUserInfo={setUserInfo}
+          setShowWebsite={setShowWebsite}
+          setLogIn={setLogIn}
+        />
+      );
     } else if (showWebsite === true) {
       return (
         <div>
