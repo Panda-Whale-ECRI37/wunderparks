@@ -7,7 +7,7 @@ import Welcome from './modal/Welcome.jsx';
 
 const App = () => {
   // let codes = [];
-  const [codes, setCodes] = useState({});
+  const [codes, setCodes] = useState([]);
 
   /*
   const parksVisited = {
