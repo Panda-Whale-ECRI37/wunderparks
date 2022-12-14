@@ -4,12 +4,17 @@ function CreateUser(props) {
   const [name, setName] = useState('');
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
 
   //function to send info to the database
 
   const sendInfo = (e) => {
     const requestBody = { username, password, name };
     console.log(requestBody);
+
+    if (username === '' || password === '' || name === '') {
+      return alert('Please fill out all the fields.');
+    }
 
     fetch('http://localhost:3000/user', {
       method: 'POST',
@@ -31,6 +36,7 @@ function CreateUser(props) {
       })
       .catch((err) => {
         console.log(err);
+        // setErr(true);
       });
   };
 
@@ -41,9 +47,16 @@ function CreateUser(props) {
     props.setCreateAccount(false);
   };
 
+  const renderError = () => {
+    if (err === true) {
+      return <p>Username is already taken.</p>;
+    }
+  };
+
   return (
     <div className="login-modal">
       <h4>Create your account:</h4>
+      {renderError()}
       <div className="input-container">
         <label>Name</label>
         <input
@@ -92,13 +105,6 @@ function CreateUser(props) {
         >
           submit
         </button>
-        {/* <button
-          onClick={(e) => {
-            sendInfo(e);
-          }}
-        >
-          hello
-        </button> */}
       </div>
       <div className="close-container">
         <a
