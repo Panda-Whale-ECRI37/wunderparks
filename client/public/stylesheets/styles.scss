@@ -3,6 +3,8 @@
 @import "sidebar.scss";
 @import "user-modal.scss";
 @import "planyourtrip.scss";
+@import "navbar.scss";
+@import "_variables.scss";
 
 :root {
   --body-bg-color: rgb(62, 82, 69);
@@ -36,9 +38,8 @@ body {
   display: flex;
 }
 
-h1 {
-  color: var(--h1-color);
-  text-align: center;
+.mainContainer {
+  display: flex;
 }
 
 .imageIcon {
@@ -62,11 +63,11 @@ h1 {
   filter: none;
 }
 
-.main {
-  overflow: scroll;
-}
+// .main {
+//   overflow: scroll;
+// }
 
-.container {
+.iconMaker {
   overflow: sroll;
   display: flex;
   flex-direction: row;

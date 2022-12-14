@@ -9,13 +9,6 @@ function IconMaker(props) {
   const { codes } = props;
   // console.log('props in iconmaker: ', props);
 
-  // const [amenities, setAmenities] = useState(
-  //   {
-  //     toilets: false,
-  //     maps: false,
-  //     picnicTables: false
-  // });
-
   const parksArr = [];
   for (let park in images) {
     let parkCode;
@@ -26,6 +19,9 @@ function IconMaker(props) {
         // console.log(codes.includes(parkCode));
       }
     });
+    //if page is plan your trip, then do this whole conditional
+    // for object of parkcode in our data
+    //check if it includes the filtered states, ex: activites -> name: "biking"
 
     parksArr.push(
       <Icon
@@ -37,9 +33,11 @@ function IconMaker(props) {
       />
     );
     // console.log('link :', imgLink/)
+
+    //otherwise, do the regular pushing of all the icons
   }
 
-  return <div className='container'>{parksArr}</div>;
+  return <div className='iconMaker'>{parksArr}</div>;
 }
 
 export default IconMaker;

@@ -1,0 +1,10 @@
+@import "_variables.scss";
+
+.navbar-wrapper {
+  display: flex;
+}
+
+.title {
+  margin-left: 20px;
+  color: $primary-light-color;
+}

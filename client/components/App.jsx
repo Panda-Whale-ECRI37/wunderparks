@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import SidebarContainer from "../containers/SidebarContainer.jsx";
+// import SidebarContainer from "../containers/SidebarContainer.jsx";
 import MainContainer from "../containers/MainContainer.jsx";
 import CreateUser from "./modal/CreateUser.jsx";
 import LogIn from "./modal/LogIn.jsx";
@@ -30,7 +30,7 @@ const App = () => {
   const [showCreateAccount, setCreateAccount] = useState(false);
   const [showLogIn, setLogIn] = useState(false);
   const [showWebsite, setShowWebsite] = useState(false);
-  const [planOptions, setPlanOptions] = useState();
+  // const [planOptions, setPlanOptions] = useState();
 
   const renderToPage = () => {
     if (welcome === true) {
@@ -73,13 +73,15 @@ const App = () => {
       {/* {renderToPage()} */}
       {/* <LogIn /> */}
       {/* <CreateUser /> */}
-      <SidebarContainer codes={codes} />
+
+      {/* //REMOVED */}
+      {/* <SidebarContainer codes={codes} />
       <div className='right'>
         <div className='float'>
           <h1> WÜNDER PARKS</h1>
-        </div>
-        <MainContainer codes={codes} />
-      </div>
+        </div> */}
+
+      <MainContainer codes={codes} />
     </div>
   );
 };
