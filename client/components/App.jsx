@@ -60,6 +60,7 @@ const App = () => {
     } else if (showLogIn === true) {
       return (
         <LogIn
+          setWelcome={setWelcome}
           setUserInfo={setUserInfo}
           setShowWebsite={setShowWebsite}
           setLogIn={setLogIn}
