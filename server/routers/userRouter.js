@@ -1,10 +1,10 @@
-const express = require('express');
-const userController = require('../controllers/UserController');
+const express = require("express");
+const userController = require("../controllers/UserController");
 
 const userRouter = express.Router();
 
 userRouter.get(
-  '/:parkCode',
+  "/:parkCode",
   userController.getUser,
   userController.getParkInfo,
   (_req, res) => {
@@ -12,17 +12,26 @@ userRouter.get(
   }
 );
 
-userRouter.get('/', userController.verifyUser, userController.getParks, (_req, res) => {
-  return res.status(200).json(res.locals.parks);
-});
+userRouter.get(
+  "/",
+  // userController.verifyUser,
+  userController.getParks,
+  (_req, res) => {
+    return res.status(200).json(res.locals.parks);
+  }
+);
 
-userRouter.post('/:parkCode', userController.addPark, (_req, res) => {
+userRouter.post("/:parkCode", userController.addPark, (_req, res) => {
   return res.status(200).json(res.locals.park);
 });
 
-userRouter.post('/', userController.getUser, userController.createUser, (_req, res) => {
-  return res.status(200).json(res.locals.newUser);
-});
-
+userRouter.post(
+  "/",
+  userController.getUser,
+  userController.createUser,
+  (_req, res) => {
+    return res.status(200).json(res.locals.newUser);
+  }
+);
 
 module.exports = userRouter;
