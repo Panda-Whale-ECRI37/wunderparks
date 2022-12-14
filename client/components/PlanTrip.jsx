@@ -14,7 +14,7 @@ const PlanTrip = (props) => {
   //topics/parks
 
   return (
-    <div>
+    <div className='plan-trip-wrapper'>
       <h1>Plan Your Trip</h1>
       <div className='formWrapper'>
         <form action=''></form>
