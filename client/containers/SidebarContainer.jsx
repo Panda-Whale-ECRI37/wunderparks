@@ -31,9 +31,8 @@ const SidebarContainer = (props) => {
       {/* <PlanTrip
         parksData={props.parksData}
         filteredParkCodes={props.filteredParkCodes}
-        setFilteredParkCodes={props.setFilteredParkCodes}
-      />
-      /> */}
+        setFilteredParkCodes={props.setFilteredParkCodes} */}
+
       {switchSidebar()}
     </div>
   );

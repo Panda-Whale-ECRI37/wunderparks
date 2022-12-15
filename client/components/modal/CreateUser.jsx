@@ -29,7 +29,7 @@ function CreateUser(props) {
       .then((data) => {
         // on successful create info
         console.log(data);
-        props.setUserInfo(data.user.username); // save username to state
+        props.setUserInfo(data.username); // save username to state
         // props.setCodes(data.parksVisited); // save parkvisited to state
         props.setShowWebsite(true);
         props.setCreateAccount(false);
