@@ -15,6 +15,7 @@ const MainContainer = (props) => {
     allCodes.push(parkcodes[parkName]);
   }
   const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
+  console.log(filteredParkCodes, "maincontainer");
 
   // };
   return (
