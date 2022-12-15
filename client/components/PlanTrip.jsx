@@ -40,6 +40,7 @@ const PlanTrip = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(props.filteredParkCodes, "before");
 
     const filterActivities = [];
     const filterTopics = [];
@@ -72,7 +73,9 @@ const PlanTrip = (props) => {
       }
       if (currCount === count) filteredCodes.push(parkCode);
     }
+
     props.setFilteredParkCodes(filteredCodes);
+    console.log(props.filteredParkCodes, "after");
   };
 
   return (
