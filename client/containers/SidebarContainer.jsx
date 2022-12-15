@@ -12,6 +12,8 @@ const SidebarContainer = (props) => {
           parksData={props.parksData}
           activities={props.activities}
           topics={props.topics}
+          filteredParkCodes={props.filteredParkCodes}
+          setFilteredParkCodes={props.setFilteredParkCodes}
         />
       );
     } else if (props.logTrip === true) {
