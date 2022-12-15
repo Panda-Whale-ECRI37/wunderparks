@@ -3,11 +3,14 @@
 .navbar-wrapper {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(1, 64, 1, 0.514);
+  // background-color: rgba(1, 64, 1, 0.514);
+  background-color: #d2d2cf3e;
   gap: 2rem;
   padding: 0 2rem;
   font-size: 16px;
   align-items: center;
+  border-radius: 15px;
+  box-shadow: #070a015e 0px 1px 4px;
 }
 
 .title {
@@ -34,8 +37,13 @@
       }
     }
     li:hover {
-      background-color: rgba(1, 64, 1);
+      // background-color: rgba(1, 64, 1);
+      background-color: ghostwhite;
+
       height: 100%;
+      a {
+        color: rgb(68, 98, 68);
+      }
     }
   }
 }
