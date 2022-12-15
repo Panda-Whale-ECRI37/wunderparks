@@ -12,12 +12,12 @@ const MainContainer = (props) => {
   const [plan, setPlan] = useState(true);
   const [logTrip, setLogTrip] = useState(false);
   // useEffect(){
-  const allCodes = [];
-  for (let parkName in parkcodes) {
-    allCodes.push(parkcodes[parkName]);
-  }
-  const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
-  console.log(filteredParkCodes, 'maincontainer');
+  // const allCodes = [];
+  // for (let parkName in parkcodes) {
+  //   allCodes.push(parkcodes[parkName]);
+  // }
+  // const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
+  // console.log(filteredParkCodes, 'maincontainer');
   // const allCodes = [];
   // for (let parkName in parkcodes) {
   //   allCodes.push(parkcodes[parkName]);
