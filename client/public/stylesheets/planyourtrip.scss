@@ -6,3 +6,43 @@ h1 {
   color: white;
   text-align: center;
 }
+
+.select-dropdown {
+  // position: relative;
+  background-color: var(--select-dropdown-bg-color);
+  width: auto;
+  float: left;
+  max-width: 100%;
+  border-radius: 0.25rem;
+
+  select {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.4em;
+    font-size: 1rem;
+    font-weight: 200;
+    max-width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+
+    &:active,
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &:after {
+    content: " ";
+    // position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--selected-dropdown-after-border-top-color);
+  }
+}
