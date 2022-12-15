@@ -17,10 +17,18 @@ const MainContainer = (props) => {
   const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
   console.log(filteredParkCodes, "maincontainer");
 
+  //function to toggle between showing the setlog and plan trip
+
   // };
   return (
     <div className='toolpage'>
-      <Navbar />
+      <Navbar
+        setWelcome={props.setWelcome}
+        setShowWebsite={props.setShowWebsite}
+        setLogTrip={setLogTrip}
+        setPlan={setPlan}
+      />
+
       <div className='mainContainer'>
         <SidebarContainer
           codes={props.codes}

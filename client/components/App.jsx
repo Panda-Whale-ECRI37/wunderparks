@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 // import SidebarContainer from "../containers/SidebarContainer.jsx";
-import MainContainer from "../containers/MainContainer.jsx";
-import CreateUser from "./modal/CreateUser.jsx";
-import LogIn from "./modal/LogIn.jsx";
-import Welcome from "./modal/Welcome.jsx";
+import MainContainer from '../containers/MainContainer.jsx';
+import CreateUser from './modal/CreateUser.jsx';
+import LogIn from './modal/LogIn.jsx';
+import Welcome from './modal/Welcome.jsx';
 
 const App = () => {
   // let codes = [];
-  const [codes, setCodes] = useState({});
+  const [codes, setCodes] = useState([]);
 
   /*
   const parksVisited = {
@@ -22,7 +22,7 @@ const App = () => {
   };
 
   //state for username
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState('');
 
   // useEffect(() => {
   //   fetch('http://localhost:3000/user/', {
@@ -60,18 +60,20 @@ const App = () => {
     } else if (showLogIn === true) {
       return (
         <LogIn
+          setWelcome={setWelcome}
           setUserInfo={setUserInfo}
           setShowWebsite={setShowWebsite}
           setLogIn={setLogIn}
+          setCodes={setCodes}
         />
       );
     } else if (showWebsite === true) {
       return (
-        <div className='right'>
-          <div className='float'>
-            <h1> WÜNDER PARKS</h1>
-          </div>
-        </div>
+        <MainContainer
+          codes={codes}
+          setWelcome={setWelcome}
+          setShowWebsite={setShowWebsite}
+        />
       );
     }
   };
@@ -80,18 +82,16 @@ const App = () => {
 
   function showCorrectModal(component) {
     setWelcome(false);
-    if (component === "showCreateAccount") {
+    if (component === 'showCreateAccount') {
       setCreateAccount(true);
-    } else if (component === "showLogIn") {
+    } else if (component === 'showLogIn') {
       setLogIn(true);
     }
   }
 
   return (
-    <div className='app'>
-      {/* {renderToPage()} */}
-      {/* <LogIn /> */}
-      {/* <CreateUser /> */}
+    <div className="app">
+      {renderToPage()}
 
       {/* //REMOVED */}
       {/* <SidebarContainer codes={codes} />
@@ -100,7 +100,11 @@ const App = () => {
           <h1> WÜNDER PARKS</h1>
         </div> */}
 
-      <MainContainer codes={codes} />
+      {/* <MainContainer
+        codes={codes}
+        setWelcome={setWelcome}
+        setShowWebsite={setShowWebsite}
+      /> */}
     </div>
   );
 };

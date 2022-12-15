@@ -15,7 +15,9 @@ const userSchema = new Schema(
     name: {type: String, required: true},
     username: { type: String, required: true },
     password: {type: String, required: true},
-    parksVisited: {},
+    parksVisited: [ String ],
+    trips: [], //array of trip objects [{parkCode: 'brca', date: Date string?, activitiesDone: [activities], notes: string}],
+
   },
   { minimize: false }
 );

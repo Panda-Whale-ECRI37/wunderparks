@@ -8,7 +8,7 @@ import parkCodes from "../public/parkcodes.js";
 function IconMaker(props) {
   const { codes } = props;
   // console.log('props in iconmaker: ', props);
-
+  // console.log(props);
   const parksArr = [];
   for (let park in images) {
     let parkCode;

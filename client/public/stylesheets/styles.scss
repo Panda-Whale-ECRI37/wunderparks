@@ -1,10 +1,10 @@
-@import "modals.scss";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-@import "sidebar.scss";
-@import "user-modal.scss";
-@import "planyourtrip.scss";
-@import "navbar.scss";
-@import "_variables.scss";
+@import 'modals.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import 'sidebar.scss';
+@import 'user-modal.scss';
+@import 'planyourtrip.scss';
+@import 'navbar.scss';
+@import '_variables.scss';
 
 :root {
   --body-bg-color: rgb(62, 82, 69);
@@ -13,6 +13,7 @@
   --login-signup-bg-color: beige;
   --login-signup-color: black;
 }
+
 .app {
   margin: none;
   height: inherit;
@@ -30,7 +31,7 @@ body {
     transparent 1px,
     transparent 6px
   );
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-size: 4px 4px;
 }
 
@@ -84,7 +85,7 @@ body {
 //Landing page styling
 
 .login-signup {
-  font-family: "Signika Negative", sans-serif;
+  font-family: 'Signika Negative', sans-serif;
   font-size: 16px;
   font-weight: 400;
   z-index: 2;

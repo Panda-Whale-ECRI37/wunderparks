@@ -24,8 +24,10 @@ function LogIn(props) {
       .then((data) => data.json())
       .then((data) => {
         console.log('data', data);
-        props.setUserInfo(data.user.username); // save username to state
-        // props.setCodes(data.parksVisited); // save parkvisited to state
+        props.setUserInfo(data.username);
+        // save username to state
+        props.setCodes(data.parks);
+        // save parkvisited to state
         props.setShowWebsite(true);
         props.setLogIn(false);
       })
@@ -35,10 +37,10 @@ function LogIn(props) {
       });
   };
 
-  // const closeButton = () => {
-  //   props.setWelcome(true);
-  //   props.
-  // }
+  const closeButton = () => {
+    props.setWelcome(true);
+    props.setLogIn(false);
+  };
 
   return (
     <div className="login-modal">
