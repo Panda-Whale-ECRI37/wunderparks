@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import IconMaker from "../components/IconMaker.jsx";
-import BasicExample from "../components/ProgressBar.jsx";
+// import BasicExample from "../components/ProgressBar.jsx";
 import SidebarContainer from "./SidebarContainer.jsx";
 import Navbar from "../components/Navbar.jsx";
 import parksData from "../public/parksData.js";
@@ -8,7 +8,8 @@ import parkcodes from "../public/parkcodes.js";
 
 // declare MainContainer function
 const MainContainer = (props) => {
-  const [state, setState] = useState();
+  // const [state, setState] = useState();
+  const [plan, setPlan] = useState(true);
   // useEffect(){
   const allCodes = [];
   for (let parkName in parkcodes) {
