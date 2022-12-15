@@ -51,10 +51,12 @@ const Sidebar = (props) => {
       }
       console.log({ parkCode, date, activitiesDone, notes });
 
+      const requestBody = { parkCode, date, activitiesDone, notes };
+
       fetch(`http://localhost:3000/user/${parkCode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'Application/JSON' },
-        body: JSON.stringify({ parkCode, date, activitiesDone, notes }),
+        body: JSON.stringify(requestBody),
       })
         .then((res) => res.json())
         .then(window.location.reload(false))
