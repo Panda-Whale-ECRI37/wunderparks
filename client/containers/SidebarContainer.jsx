@@ -28,12 +28,12 @@ const SidebarContainer = (props) => {
     <div className="sidebarContainer">
       {/* <Form codes={props.codes} />
       <ParkTally codes={props.codes} /> */}
-      <PlanTrip
+      {/* <PlanTrip
         parksData={props.parksData}
         filteredParkCodes={props.filteredParkCodes}
-        setFilteredParkCodes={props.setFilteredParkCodes}
-      />
-      {/* {switchSidebar()} */}
+        setFilteredParkCodes={props.setFilteredParkCodes} */}
+
+      {switchSidebar()}
     </div>
   );
 };
