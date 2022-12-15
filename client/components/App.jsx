@@ -23,6 +23,7 @@ const App = () => {
 
   //state for username
   const [userInfo, setUserInfo] = useState("");
+  console.log(userInfo);
 
   // useEffect(() => {
   //   fetch('http://localhost:3000/user/', {
@@ -73,6 +74,7 @@ const App = () => {
           codes={codes}
           setWelcome={setWelcome}
           setShowWebsite={setShowWebsite}
+          userInfo={userInfo}
           // setLogIn={setLogIn}
         />
       );
@@ -90,24 +92,7 @@ const App = () => {
     }
   }
 
-  return (
-    <div className='app'>
-      {/* {renderToPage()} */}
-
-      {/* //REMOVED */}
-      {/* <SidebarContainer codes={codes} />
-      <div className='right'>
-        <div className='float'>
-          <h1> WÜNDER PARKS</h1>
-        </div> */}
-
-      <MainContainer
-        codes={codes}
-        setWelcome={setWelcome}
-        setShowWebsite={setShowWebsite}
-      />
-    </div>
-  );
+  return <div className='app'>{renderToPage()}</div>;
 };
 
 export default App;

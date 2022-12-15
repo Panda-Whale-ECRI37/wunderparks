@@ -10,20 +10,13 @@ import parkcodes from "../public/parkcodes.js";
 const MainContainer = (props) => {
   // const [state, setState] = useState();
   const [plan, setPlan] = useState(true);
+  const [logTrip, setLogTrip] = useState(false);
   // useEffect(){
-  // const allCodes = [];
-  // for (let parkName in parkcodes) {
-  //   allCodes.push(parkcodes[parkName]);
-  // }
-  // const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
-  const [filteredParkCodes, setFilteredParkCodes] = useState([]);
-  useEffect(() => {
-    const allCodes = [];
-    for (let parkName in parkcodes) {
-      allCodes.push(parkcodes[parkName]);
-    }
-    setFilteredParkCodes(allCodes);
-  }, []);
+  const allCodes = [];
+  for (let parkName in parkcodes) {
+    allCodes.push(parkcodes[parkName]);
+  }
+  const [filteredParkCodes, setFilteredParkCodes] = useState(allCodes);
   console.log(filteredParkCodes, "maincontainer");
 
   //function to toggle between showing the setlog and plan trip
@@ -31,11 +24,14 @@ const MainContainer = (props) => {
   // };
   return (
     <div className='toolpage'>
+      {console.log(props.userInfo)}
       <Navbar
         setWelcome={props.setWelcome}
         setShowWebsite={props.setShowWebsite}
-        setLogTrip={props.setLogTrip}
+        setLogTrip={setLogTrip}
         setPlan={setPlan}
+        logTrip={logTrip}
+        plan={plan}
       />
 
       <div className='mainContainer'>
@@ -44,6 +40,11 @@ const MainContainer = (props) => {
           parksData={parksData}
           filteredParkCodes={filteredParkCodes}
           setFilteredParkCodes={setFilteredParkCodes}
+          setLogTrip={setLogTrip}
+          setPlan={setPlan}
+          logTrip={logTrip}
+          plan={plan}
+          userInfo={props.userInfo}
         />
         <IconMaker codes={props.codes} filteredParkCodes={filteredParkCodes} />
       </div>

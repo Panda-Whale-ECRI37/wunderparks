@@ -1,24 +1,24 @@
-const mongoose = require("mongoose");
-const User = require("../models/userModel.js");
+const mongoose = require('mongoose');
+const User = require('../models/userModel.js');
 
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 const userController = {};
 
 // Create a new user in the database
 userController.createUser = async (req, res, next) => {
-  console.log("reqbody", req.body);
+  console.log('reqbody', req.body);
   console.log(res.locals);
   try {
     if (res.locals.user) {
       // if res.locals.user is defined, then user w/ username exists already
       return next({
-        log: "userController.createUser",
+        log: 'userController.createUser',
         status: 400,
-        message: { err: "Username Taken" },
+        message: { err: 'Username Taken' },
       });
     }
-    console.log("create user", req.body);
+    console.log('create user', req.body);
     const salt = await bcrypt.genSalt(10);
     const { name, username, password } = req.body;
     const hashPW = await bcrypt.hash(password, salt);
@@ -50,8 +50,8 @@ userController.getUser = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      console.log("User not found");
-      return next({ message: "Error in getUser" });
+      console.log('User not found');
+      return next({ message: 'Error in getUser' });
     });
 };
 
@@ -61,9 +61,9 @@ userController.verifyUser = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return next({
-          log: "userController.verifyUser",
+          log: 'userController.verifyUser',
           status: 400,
-          message: { err: "Wrong username or password" },
+          message: { err: 'Wrong username or password' },
         });
       } else {
         const hashPW = user.password;
@@ -74,31 +74,33 @@ userController.verifyUser = (req, res, next) => {
             return next(); // returns true if password matches hashPW
           } else {
             return next({
-              log: "userController.verifyUser",
+              log: 'userController.verifyUser',
               status: 400,
-              message: { err: "Wrong username or password" },
+              message: { err: 'Wrong username or password' },
             });
           }
         });
       }
     })
     .catch((err) => {
-      return next({ message: "Error in verifyUser" });
+      return next({ message: 'Error in verifyUser' });
     });
 };
 
 // Add a park to a user's visited parks array
 userController.addPark = async (req, res, next) => {
   try {
+    console.log(req.body, req.params);
     const parkCode = req.params.parkCode;
-    const user = await User.findOne({ username: req.body.username })
+    const user = await User.findOne({ username: req.body.username });
     // const user = await User.findOne({ name: 'Aalok' });
     if (user) {
       // const usersParksVisited = Object.keys(user.parksVisited);
-      if(!user.parksVisited.includes(parkCode)) {//add park if has not visited
-        user.parksVisited = [ ...user.parksVisited, parkCode ];
+      if (!user.parksVisited.includes(parkCode)) {
+        //add park if has not visited
+        user.parksVisited = [...user.parksVisited, parkCode];
         const newUser = await user.save();
-      }  
+      }
     }
     res.locals.parks = user.parksVisited; // <-- send back updated list of all parks & trips XXthe newly added park's info
     return next();
@@ -116,7 +118,8 @@ userController.addPark = async (req, res, next) => {
 userController.addTrip = async (req, res, next) => {
   try {
     const parkCode = req.params.parkCode;
-    const newTrip = { // create new trip
+    const newTrip = {
+      // create new trip
       parkCode: parkCode,
       date: req.body.date,
       notes: req.body.notes,
@@ -126,12 +129,13 @@ userController.addTrip = async (req, res, next) => {
     // const user = await User.findOne({ name: 'Aalok' });
     if (user) {
       const usersParksVisited = Object.keys(user.parksVisited);
-      if(usersParksVisited.includes(parkCode)) {//if user has already visited this park
-        user.parksVisited = user.parksVisited.parkCode.concat(newTrip) // { ...user.parksVisited, [parkCode]: newPark };
+      if (usersParksVisited.includes(parkCode)) {
+        //if user has already visited this park
+        user.parksVisited = user.parksVisited.parkCode.concat(newTrip); // { ...user.parksVisited, [parkCode]: newPark };
         const newUser = await user.save();
         console.log(newUser);
-      }
-      else { //if first time visiting this park
+      } else {
+        //if first time visiting this park
         user.parksVisited.parkCode = [newTrip]; // set key as parkCode and value as array w/ first trip
       }
     }
@@ -153,7 +157,7 @@ userController.getParks = (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      return next({ message: "Error in getParks" });
+      return next({ message: 'Error in getParks' });
     });
 };
 
@@ -164,8 +168,8 @@ userController.getParkInfo = (req, res, next) => {
 
     const userTrips = res.locals.user.trips;
     let parkTrips = [];
-    for(let i = 0; i < userTrips.length; i++) {
-      if(userTrips[i].parkCode === parkCode) {
+    for (let i = 0; i < userTrips.length; i++) {
+      if (userTrips[i].parkCode === parkCode) {
         parkTrips.push(userTrips[i]);
       }
     }

@@ -24,7 +24,7 @@ function LogIn(props) {
       .then((data) => data.json())
       .then((data) => {
         console.log('data', data);
-        props.setUserInfo(data.username);
+        props.setUserInfo(data.user.username);
         // save username to state
         props.setCodes(data.parks);
         // save parkvisited to state

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Form from "../components/Form.jsx";
-import ParkTally from "../components/ParkTally.jsx";
-import PlanTrip from "../components/PlanTrip.jsx";
+import React, { useState, useEffect } from 'react';
+import Form from '../components/Form.jsx';
+import ParkTally from '../components/ParkTally.jsx';
+import PlanTrip from '../components/PlanTrip.jsx';
 
 const SidebarContainer = (props) => {
   //render different sidebars function
@@ -17,7 +17,7 @@ const SidebarContainer = (props) => {
     } else if (props.logTrip === true) {
       return (
         <div>
-          <Form codes={props.codes} />
+          <Form codes={props.codes} userInfo={props.userInfo} />
           <ParkTally codes={props.codes} />
         </div>
       );
@@ -25,7 +25,7 @@ const SidebarContainer = (props) => {
   }
 
   return (
-    <div className='sidebarContainer'>
+    <div className="sidebarContainer">
       {/* <Form codes={props.codes} />
       <ParkTally codes={props.codes} /> */}
       <PlanTrip
