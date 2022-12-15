@@ -7,11 +7,13 @@ const PlanTrip = (props) => {
   for (let abbr in states) {
     statesList.push(states[abbr]);
   }
+  console.log(statesList);
 
   const activities = {
     artsAndCulture: { value: false, name: "Arts and Culture" },
     biking: { value: false, name: "Biking" },
     birdWatching: { value: false, name: "Birdwatching" },
+    hiking: {value: false,name:"Hiking"}
     // camping: false,
     // fishing: false,
     // guidedTours: false,
@@ -22,6 +24,7 @@ const PlanTrip = (props) => {
     archeology: { value: false, name: "Archeology" },
     explorers: { value: false, name: "Explorers and Expeditions" },
     fossils: { value: false, name: "Fossils and Paleontology" },
+    ancientSeas: {value: false,name:"Ancient Seas"}
     // homesteading: false,
     // nativeAmericanHeritage: false,
     // womensHistory: false,
@@ -55,12 +58,12 @@ const PlanTrip = (props) => {
         filterTopics.push(topics[key].name);
       }
     }
-
     const count = filterTopics.length + filterActivities.length;
     const filteredCodes = [];
 
     for (let parkCode in parksData) {
       let currCount = 0;
+      //if(selectedState === parkCode.states) (....)
       for (let i = 0; i < parksData[parkCode].activities.length; i++) {
         if (filterActivities.includes(parksData[parkCode].activities[i].name)) {
           currCount += 1;
@@ -81,33 +84,24 @@ const PlanTrip = (props) => {
   return (
     <div className='plan-trip-wrapper'>
       <div className='formWrapper'>
-        <form className='form' onSubmit={handleSubmit}>
+        <form className='form' id="plan-trip-form"onSubmit={handleSubmit}>
           {" "}
           {/* //put a handle submit here */}
           <h2>Plan Your Trip</h2>
-          {/* <div className='select-dropdown'>
-            <select
-              name='state'
-              id='state'
-              className='select-dropdown'
-              // value={props.state}
-              // onChange={(e) => {
-              //   props.setState(e.target.value);
-              // }}
-            >
-              <option value=''>Select State:</option>
-              {statesList}
-            </select> */}
-          {/* </div> */}
+          
           <h3>Activities</h3>
-          <div className='checkboxes'>
+          <div className='checkboxes' id="activity-div">
+            <div classname="input"> 
             <input
               type='checkbox'
               id='artsAndCulture'
               value={activities.artsAndCulture}
               onChange={(e) => toggleItem(e.target.id)}
-            />{" "}
+            />
             <label htmlFor='artsAndCulture'>Arts and Culture</label>
+            
+            </div>
+            <div classname="input"> 
             <input
               type='checkbox'
               id='biking'
@@ -115,6 +109,17 @@ const PlanTrip = (props) => {
               onChange={(e) => toggleItem(e.target.id)}
             />{" "}
             <label htmlFor='biking'>Biking</label>
+            </div>
+            <div classname="input"> 
+            <input
+              type='checkbox'
+              id='hiking'
+              value={activities.hiking}
+              onChange={(e) => toggleItem(e.target.id)}
+            />{" "}
+            <label htmlFor='hiking'>Hiking</label>
+            </div>
+            <div classname="input"> 
             <input
               type='checkbox'
               id='birdWatching'
@@ -122,9 +127,11 @@ const PlanTrip = (props) => {
               onChange={(e) => toggleItem(e.target.id)}
             />{" "}
             <label htmlFor='birdWatching'>Bird Watching</label>
+            </div>
           </div>
           <h3>Topics</h3>
-          <div className='checkboxes'>
+          <div className='checkboxes' id="topic-div">
+          <div classname="input"> 
             <input
               type='checkbox'
               id='archeology'
@@ -132,13 +139,17 @@ const PlanTrip = (props) => {
               onChange={(e) => toggleItem(e.target.id)}
             />{" "}
             <label htmlFor='archeology'>Archeology</label>
+            </div>
+            <div classname="input"> 
             <input
               type='checkbox'
               id='explorers'
               value={topics.explorers}
               onChange={(e) => toggleItem(e.target.id)}
             />{" "}
-            <label htmlFor='explorers'>Explorers and Expeditions</label>
+            <label htmlFor='explorers'>Explorers</label>
+            </div> 
+            <div classname="input"> 
             <input
               type='checkbox'
               id='fossils'
@@ -146,10 +157,22 @@ const PlanTrip = (props) => {
               onChange={(e) => toggleItem(e.target.id)}
             />{" "}
             <label htmlFor='fossils'>Fossils</label>
+            </div> 
+            <div classname="input"> 
+            <input
+              type='checkbox'
+              id='ancientSeas'
+              value={topics.ancientSeas}
+              onChange={(e) => toggleItem(e.target.id)}
+            />{" "}
+            <label htmlFor='ancientSeas'>Ancient Seas</label>
+            </div>
           </div>
-          <button type='submit' id='submit'>
+          <div className="submit-btn-plan">
+          <button type='submit' id='submit-plan'>
             Filter Parks
           </button>
+          </div>
         </form>
       </div>
     </div>

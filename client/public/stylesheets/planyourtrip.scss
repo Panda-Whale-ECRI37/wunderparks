@@ -46,3 +46,47 @@ h1 {
     border-top: 5px solid var(--selected-dropdown-after-border-top-color);
   }
 }
+
+#activity-div {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#topic-div {
+  display: flex;
+  flex-direction: column;
+  // flex-direction:
+}
+
+#plan-trip-form h3{
+ margin: 20px 0px;
+}
+
+#submit-plan{
+  background-color: white;
+  border-radius: 0.25rem;
+  width: 50%;
+  border: none;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  padding: 0.45rem 0.35rem;
+  // position: relative;
+  // margin-left: 25%;
+  // margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.submit-btn-plan{
+  display: flex;
+  justify-content: center;
+  padding-top: 30px
+}
+
+// .input{
+//   display: flex;
+//   justify-content: flex-start;
+// }
