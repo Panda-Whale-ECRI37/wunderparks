@@ -17,7 +17,7 @@ const SidebarContainer = (props) => {
     } else if (props.logTrip === true) {
       return (
         <div>
-          <Form codes={props.codes} />
+          <Form codes={props.codes} userInfo={props.userInfo} />
           <ParkTally codes={props.codes} />
         </div>
       );

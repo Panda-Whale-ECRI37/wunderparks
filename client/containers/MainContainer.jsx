@@ -24,6 +24,7 @@ const MainContainer = (props) => {
   // };
   return (
     <div className="toolpage">
+      {console.log(props.userInfo)}
       <Navbar
         setWelcome={props.setWelcome}
         setShowWebsite={props.setShowWebsite}
@@ -43,6 +44,7 @@ const MainContainer = (props) => {
           setPlan={setPlan}
           logTrip={logTrip}
           plan={plan}
+          userInfo={props.userInfo}
         />
         <IconMaker codes={props.codes} filteredParkCodes={filteredParkCodes} />
       </div>

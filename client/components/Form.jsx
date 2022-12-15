@@ -51,7 +51,10 @@ const Sidebar = (props) => {
       }
       console.log({ parkCode, date, activitiesDone, notes });
 
-      const requestBody = { parkCode, date, activitiesDone, notes };
+      let username = props.userInfo;
+
+      const requestBody = { username, date, activitiesDone, notes };
+      console.log(requestBody);
 
       fetch(`http://localhost:3000/user/${parkCode}`, {
         method: 'POST',
@@ -60,8 +63,13 @@ const Sidebar = (props) => {
       })
         .then((res) => res.json())
         .then(window.location.reload(false))
-        .then((data) => {})
-        .catch((err) => console.log('AddPark fetch POST to api: ERROR: ', err));
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          window.location.reload(false);
+          console.log('AddPark fetch POST to api: ERROR: ', err);
+        });
     }
   }
 
