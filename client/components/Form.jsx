@@ -50,6 +50,7 @@ const Sidebar = (props) => {
         activities[item] && activitiesDone.push(item);
       }
       console.log({ parkCode, date, activitiesDone, notes });
+
       fetch(`http://localhost:3000/user/${parkCode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'Application/JSON' },

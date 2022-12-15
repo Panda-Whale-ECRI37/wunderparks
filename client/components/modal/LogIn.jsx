@@ -9,7 +9,7 @@ function LogIn(props) {
     if (username === '' || password === '') {
       return alert('Please fill out all the fields.');
     }
-    console.log('we are in the submit');
+    // console.log('we are in the submit');
 
     const requestBody = { username, password };
     console.log('reqBody', requestBody);
@@ -34,6 +34,8 @@ function LogIn(props) {
       .catch((err) => {
         // return alert('username or password incorrect. Please try again.');
         console.log(err);
+        alert(`Username or password is incorrect. Please try again.`);
+        window.location = '/';
       });
   };
 
