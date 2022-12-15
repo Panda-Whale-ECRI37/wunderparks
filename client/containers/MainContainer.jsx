@@ -25,7 +25,7 @@ const MainContainer = (props) => {
       <Navbar
         setWelcome={props.setWelcome}
         setShowWebsite={props.setShowWebsite}
-        setLogTrip={setLogTrip}
+        setLogTrip={props.setLogTrip}
         setPlan={setPlan}
       />
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from "react";
 // import SidebarContainer from "../containers/SidebarContainer.jsx";
-import MainContainer from '../containers/MainContainer.jsx';
-import CreateUser from './modal/CreateUser.jsx';
-import LogIn from './modal/LogIn.jsx';
-import Welcome from './modal/Welcome.jsx';
+import MainContainer from "../containers/MainContainer.jsx";
+import CreateUser from "./modal/CreateUser.jsx";
+import LogIn from "./modal/LogIn.jsx";
+import Welcome from "./modal/Welcome.jsx";
 
 const App = () => {
   // let codes = [];
@@ -22,7 +22,7 @@ const App = () => {
   };
 
   //state for username
-  const [userInfo, setUserInfo] = useState('');
+  const [userInfo, setUserInfo] = useState("");
 
   // useEffect(() => {
   //   fetch('http://localhost:3000/user/', {
@@ -73,6 +73,7 @@ const App = () => {
           codes={codes}
           setWelcome={setWelcome}
           setShowWebsite={setShowWebsite}
+          // setLogIn={setLogIn}
         />
       );
     }
@@ -82,15 +83,15 @@ const App = () => {
 
   function showCorrectModal(component) {
     setWelcome(false);
-    if (component === 'showCreateAccount') {
+    if (component === "showCreateAccount") {
       setCreateAccount(true);
-    } else if (component === 'showLogIn') {
+    } else if (component === "showLogIn") {
       setLogIn(true);
     }
   }
 
   return (
-    <div className="app">
+    <div className='app'>
       {renderToPage()}
 
       {/* //REMOVED */}
