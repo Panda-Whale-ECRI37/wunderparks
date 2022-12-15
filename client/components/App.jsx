@@ -92,7 +92,7 @@ const App = () => {
 
   return (
     <div className='app'>
-      {renderToPage()}
+      {/* {renderToPage()} */}
 
       {/* //REMOVED */}
       {/* <SidebarContainer codes={codes} />
@@ -101,11 +101,11 @@ const App = () => {
           <h1> WÜNDER PARKS</h1>
         </div> */}
 
-      {/* <MainContainer
+      <MainContainer
         codes={codes}
         setWelcome={setWelcome}
         setShowWebsite={setShowWebsite}
-      /> */}
+      />
     </div>
   );
 };
