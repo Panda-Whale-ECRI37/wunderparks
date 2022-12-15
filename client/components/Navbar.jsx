@@ -8,9 +8,9 @@ const Navbar = (props) => {
     } else if (component === 'logTrip') {
       props.setPlan(false);
       props.setLogTrip(true);
-    } else if (compoment === 'planTrip') {
-      props.setPlan(true);
+    } else if (component === 'planTrip') {
       props.setLogTrip(false);
+      props.setPlan(true);
     }
   };
 

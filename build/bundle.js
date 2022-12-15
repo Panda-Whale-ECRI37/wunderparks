@@ -9806,9 +9806,8 @@
           Zion: "zion",
         },
         c = function (a) {
-          var n = a.codes;
-          console.log(n);
-          var i = [],
+          var n = a.codes,
+            i = [],
             t = function (a) {
               var t = void 0;
               Object.keys(l).forEach(function (e) {
@@ -26132,7 +26131,7 @@
                           .then(function (e) {
                             console.log("data", e),
                               a.setUserInfo(e.username),
-                              a.setCodes(e.parksVisited),
+                              a.setCodes(e.parks),
                               a.setShowWebsite(!0),
                               a.setLogIn(!1);
                           })
@@ -26234,6 +26233,7 @@
                   setUserInfo: o,
                   setShowWebsite: D,
                   setLogIn: C,
+                  setCodes: i,
                 })
               : !0 === E
               ? e.createElement(P, {
