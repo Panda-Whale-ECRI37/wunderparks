@@ -103,11 +103,11 @@ const App = () => {
           <h1> WÜNDER PARKS</h1>
         </div> */}
 
-      {/* <MainContainer
+      <MainContainer
         codes={codes}
         setWelcome={setWelcome}
         setShowWebsite={setShowWebsite}
-      /> */}
+      />
     </div>
   );
 };
